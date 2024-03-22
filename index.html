@@ -11,11 +11,6 @@
     />
     <!-- Custom CSS -->
     <style>
-      /* Estilos personalizados aqui */
-      /* Exemplo: */
-      /* body {
-      background-color: #f8f9fa;
-    } */
       .jumbotron {
         background-image: url("https://source.unsplash.com/1920x1080/?france");
         background-repeat: no-repeat;
@@ -46,6 +41,9 @@
       .title-end {
         color: #ef4135;
       }
+      .text-shadow {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+      }
     </style>
   </head>
   <body>
@@ -55,8 +53,9 @@
       style="backdrop-filter: blur(5px)"
     >
       <a class="display-4" style="margin-inline: 10vw" href="#"
-        ><span class="title-begin">Fr</span><span class="title-mid">an</span
-        ><span class="title-end">ça</span></a
+        ><span class="title-begin text-shadow">Fr</span
+        ><span class="title-mid text-shadow">an</span
+        ><span class="title-end text-shadow">ça</span></a
       >
       <button
         class="navbar-toggler"
@@ -71,20 +70,32 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto text-white">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a
+              class="nav-link text-white text-shadow display-6 title-begin"
+              href="#"
               >Início <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sobre</a>
+            <a
+              class="nav-link text-white text-shadow display-6 title-mid"
+              href="#"
+              >Sobre</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Destinos</a>
+            <a
+              class="nav-link text-white text-shadow display-6 title-end"
+              href="#"
+              >Destinos</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
+            <a class="nav-link text-white text-shadow display-6" href="#"
+              >Contato</a
+            >
           </li>
         </ul>
       </div>
