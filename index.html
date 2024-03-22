@@ -1,9 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>França</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      /* Estilos personalizados aqui */
+      /* Exemplo: */
+      /* body {
+      background-color: #f8f9fa;
+    } */
+      .jumbotron {
+        background-image: url("https://source.unsplash.com/1920x1080/?france");
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        height: 100vh;
+        padding: 20vh;
+      }
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+      .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra ao navbar */
+      }
+      .navbar-nav .nav-link {
+        color: #333; /* Cor do texto dos links do navbar */
+      }
+
+      .title-begin {
+        color: #0055a4;
+      }
+      .title-mid {
+        color: #ffffff;
+      }
+      .title-end {
+        color: #ef4135;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent"
+      style="backdrop-filter: blur(5px)"
+    >
+      <a class="display-4" style="margin-inline: 10vw" href="#"
+        ><span class="title-begin">Fr</span><span class="title-mid">an</span
+        ><span class="title-end">ça</span></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Início <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Destinos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-center">
+        <h1 class="display-4">Bem-vindo à França</h1>
+        <p class="lead">
+          Explore a beleza e a cultura deslumbrantes deste país encantador.
+        </p>
+      </div>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Paris</h2>
+          <p>
+            Paris, a capital da França, é conhecida como a Cidade Luz. É famosa
+            por sua arquitetura deslumbrante, culinária requintada e arte
+            inigualável.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img
+            src="https://source.unsplash.com/600x400/?paris"
+            alt="Paris"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container text-center">
+        <span class="text-muted"
+          >© 2024 França - Todos os direitos reservados.</span
+        >
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS e jQuery (opcional, se necessário) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
