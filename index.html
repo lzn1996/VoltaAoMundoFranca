@@ -12,8 +12,10 @@
     <!-- Custom CSS -->
     <style>
       .jumbotron {
+        background-image: url(./assets/img/1.jpg) ;
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
         object-fit: cover;
         color: #fff;
         text-shadow: 2px 2px 4px #000000;
@@ -25,10 +27,13 @@
         overflow-x: hidden;
       }
       .navbar {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra ao navbar */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
       }
       .navbar-nav .nav-link {
-        color: #333; /* Cor do texto dos links do navbar */
+        color: #333;
+      }
+      .header-title{
+        font-size: clamp(18px, 5vw, 50px);
       }
 
       .title-begin {
@@ -43,18 +48,30 @@
       .text-shadow {
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
       }
+      .jumbo-title{
+        font-size: 5vw;
+      }
+
+      .jumbo-paragraph{
+        font-size: 3vw;
+      }
+
     </style>
+    <link rel="preload" href="./assets/img/1.jpg" as="image" />
+    <link rel="preload" href="./assets/img/2.jpg" as="image" />
+    <link rel="preload" href="./assets/img/3.jpg" as="image" />
+    <link rel="preload" href="./assets/img/4.jpg" as="image" />
   </head>
   <body>
     <!-- Navbar -->
     <nav
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent"
-      style="backdrop-filter: blur(5px)"
+      style="backdrop-filter: blur(2px); margin-inline: 10vw;"
     >
-      <a class="display-4" style="margin-inline: 10vw" href="#"
-        ><span class="title-begin text-shadow">Fr</span
-        ><span class="title-mid text-shadow">an</span
-        ><span class="title-end text-shadow">ça</span></a
+      <h1 href="#"
+        ><span class="header-title title-begin text-shadow">Fr</span
+        ><span class="header-title title-mid text-shadow">an</span
+        ><span class="header-title title-end text-shadow">ça</span></a
       >
       <button
         class="navbar-toggler"
@@ -101,10 +118,10 @@
     </nav>
 
     <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid fade-in-image">
       <div class="container text-center">
-        <h1 class="display-4">Bem-vindo à França</h1>
-        <p class="lead">
+        <h1 class='jumbo-title'>Bem-vindo à França</h1>
+        <p class="lead jumbo-paragraph">
           Explore a beleza e a cultura deslumbrantes deste país encantador.
         </p>
       </div>
