@@ -5,30 +5,9 @@ const randomIntFromInterval = (min, max) => {
   return randomInt;
 };
 
-const rndInt = randomIntFromInterval(1, 4);
-
-localStorage.setItem("chosen", rndInt);
-const chosen = localStorage.getItem("chosen");
-
-if (rndInt === chosen) {
-  jumbotronContainer.forEach((item) => {
-    item.setAttribute(
-      "style",
-      `background-image: url(./assets/img/${rndInt}.jpg)`
-    );
-  });
-} else {
+const generateImage = () => {
   const rndInt = randomIntFromInterval(1, 4);
-  jumbotronContainer.forEach((item) => {
-    item.setAttribute(
-      "style",
-      `background-image: url(./assets/img/${rndInt}.jpg)`
-    );
-  });
-}
 
-const randomAgain = () => {
-  const rndInt = randomIntFromInterval(1, 4);
   jumbotronContainer.forEach((item) => {
     item.setAttribute(
       "style",
@@ -37,4 +16,4 @@ const randomAgain = () => {
   });
 };
 
-setInterval(randomAgain, 5000);
+setInterval(generateImage, 5000);
