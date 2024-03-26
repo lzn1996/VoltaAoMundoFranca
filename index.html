@@ -11,29 +11,33 @@
     />
     <!-- Custom CSS -->
     <style>
+      .padding{
+        padding-inline: 10vw;
+      }
       .jumbotron {
-        background-image: url(./assets/img/1.jpg) ;
+        background-image: url('./assets/img/1.jpg') ;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        background-attachment: fixed;
         object-fit: cover;
         color: #fff;
         text-shadow: 2px 2px 4px #000000;
         height: 100vh;
-        padding: 20vh;
+        padding-top: 20vh;
       }
       body {
         width: 100%;
         overflow-x: hidden;
       }
       .navbar {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 2px 2px rgba(255, 255, 255, .1);
       }
       .navbar-nav .nav-link {
         color: #333;
       }
       .header-title{
-        font-size: clamp(18px, 5vw, 50px);
+        font-size: clamp(30px, 5vw, 60px);
       }
 
       .title-begin {
@@ -49,11 +53,18 @@
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
       }
       .jumbo-title{
-        font-size: 5vw;
+        font-size: clamp(24px, 5vw, 100px);
       }
 
       .jumbo-paragraph{
-        font-size: 3vw;
+        font-size: clamp(20px, 3vw, 30px);
+        color: white;
+      }
+      .nav-custom{
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        padding-inline: 10vw;
       }
 
     </style>
@@ -65,16 +76,19 @@
   <body>
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent"
-      style="backdrop-filter: blur(2px); margin-inline: 10vw;"
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
     >
-      <h1 href="#"
-        ><span class="header-title title-begin text-shadow">Fr</span
-        ><span class="header-title title-mid text-shadow">an</span
-        ><span class="header-title title-end text-shadow">ça</span></a
-      >
+    <div class="d-flex justify-content-between align-items-center w-100 flex-column flex-lg-row">
+      <div>
+
+        <h1 href="#"><span class="header-title title-begin text-shadow">Fr</span
+          ><span class="header-title title-mid text-shadow">an</span
+          ><span class="header-title title-end text-shadow">ça</span></a
+        >
+      </div>
+      </h1>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler "
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -84,51 +98,52 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto text-white">
           <li class="nav-item active">
             <a
-              class="nav-link text-white text-shadow display-6 title-begin"
+              class="nav-link text-white text-shadow display-5"
               href="#"
               >Início <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white text-shadow display-6 title-mid"
+              class="nav-link text-white text-shadow display-5"
               href="#"
               >Sobre</a
             >
           </li>
           <li class="nav-item">
             <a
-              class="nav-link text-white text-shadow display-6 title-end"
+              class="nav-link text-white text-shadow display-5"
               href="#"
               >Destinos</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white text-shadow display-6" href="#"
+            <a class="nav-link text-white text-shadow display-5" href="#"
               >Contato</a
             >
           </li>
         </ul>
       </div>
+    </div>
     </nav>
-
     <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid fade-in-image">
-      <div class="container text-center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-center" style="width: 100%;">
         <h1 class='jumbo-title'>Bem-vindo à França</h1>
         <p class="lead jumbo-paragraph">
-          Explore a beleza e a cultura deslumbrantes deste país encantador.
+          Explore a beleza e a cultura deslumbrantes deste país encantador
         </p>
       </div>
     </div>
 
     <!-- Conteúdo -->
-    <div class="container">
+
+
+    <div class="container-fluid padding">
       <div class="row">
         <div class="col-md-6">
           <h2>Paris</h2>
@@ -148,6 +163,7 @@
       </div>
     </div>
 
+    <div class="jumbotron"></div>
     <!-- Rodapé -->
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container text-center">
