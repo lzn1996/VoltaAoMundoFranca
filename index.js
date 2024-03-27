@@ -6,7 +6,7 @@ const randomIntFromInterval = (min, max) => {
 };
 
 const generateImage = () => {
-  const rndInt = randomIntFromInterval(1, 4);
+  const rndInt = randomIntFromInterval(1, 5);
 
   jumbotronContainer.forEach((item) => {
     item.setAttribute(

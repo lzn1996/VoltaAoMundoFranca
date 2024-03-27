@@ -10,9 +10,6 @@
       rel="stylesheet"
     />
     <link rel="preload" href="../assets/" as="image" />
-    <link rel="preload" href="../assets/img/2.jpg" as="image" />
-    <link rel="preload" href="../assets/img/3.jpg" as="image" />
-    <link rel="preload" href="../assets/img/4.jpg" as="image" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -20,7 +17,7 @@
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
     >
       <div class="d-flex justify-content-between w-100 flex-lg-row">
-        <a href="/" class="text-decoration-none">
+        <a href="/pages/index.html" class="text-decoration-none">
           <div>
             <h1>
               <span class="header-title title-begin text-shadow">Fr</span
@@ -29,46 +26,50 @@
             </h1>
           </div>
         </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto text-white">
-            <li class="nav-item">
-              <a
-                class="nav-link text-white text-shadow display-5"
-                href="/pages/index.html"
-                >Início</a
-              >
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link text-white text-shadow display-5" href="#"
-                >Onde ir <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link text-white text-shadow display-5"
-                href="/pages/o-que-fazer.html"
-                >O que fazer</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link text-white text-shadow display-5"
-                href="/pages/contato.html"
-                >Contato</a
-              >
-            </li>
-          </ul>
+        <div class="d-flex flex-column">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto text-white">
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white text-shadow list"
+                  href="/pages/index.html"
+                  >Início</a
+                >
+              </li>
+              <li class="nav-item active">
+                <a
+                  class="nav-link text-white text-shadow list"
+                  href="/pages/onde-ir.html"
+                  >Onde ir <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white text-shadow list"
+                  href="/pages/o-que-fazer.html"
+                  >O que fazer</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-white text-shadow list"
+                  href="/pages/contato.html"
+                  >Contato</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
