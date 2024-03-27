@@ -11,7 +11,7 @@ const generateImage = () => {
   jumbotronContainer.forEach((item) => {
     item.setAttribute(
       "style",
-      `background-image: url(./assets/img/${rndInt}.jpg)`
+      `background-image: url(../assets/img/${rndInt}.jpg)`
     );
   });
 };

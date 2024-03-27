@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preload" href="../assets/" as="image" />
+    <link rel="preload" href="../assets/img/2.jpg" as="image" />
+    <link rel="preload" href="../assets/img/3.jpg" as="image" />
+    <link rel="preload" href="../assets/img/4.jpg" as="image" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
+    >
+      <div class="d-flex justify-content-between w-100 flex-lg-row">
+        <a href="/" class="text-decoration-none">
+          <div>
+            <h1>
+              <span class="header-title title-begin text-shadow">Fr</span
+              ><span class="header-title title-mid text-shadow">an</span
+              ><span class="header-title title-end text-shadow">ça</span>
+            </h1>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto text-white">
+            <li class="nav-item">
+              <a
+                class="nav-link text-white text-shadow display-5"
+                href="/pages/index.html"
+                >Início</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link text-white text-shadow display-5" href="#"
+                >Onde ir <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white text-shadow display-5"
+                href="/pages/o-que-fazer.html"
+                >O que fazer</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white text-shadow display-5"
+                href="/pages/contato.html"
+                >Contato</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="container-fluid wrapper not-index"
+      style="padding-inline: 10vw"
+    >
+      <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+          <h2 class="display-5 text-center mb-5">Entre em contato conosco</h2>
+          <form action="/pages/contato.html">
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                placeholder="Digite seu nome"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Digite seu email"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-12">
+        <h2 class="display-5 text-center mb-5">Contatos salvos</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody id="contactTableBody">
+            <!-- Aqui serão inseridos os dados da localStorage -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container text-center">
+        <span class="text-muted"
+          >© 2024 Luan DSM Fatec Itapira - Todos os direitos reservados.</span
+        >
+      </div>
+    </footer>
+    <!-- Bootstrap JS e jQuery (opcional, se necessário) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/contato.js"></script>
+  </body>
+</html>

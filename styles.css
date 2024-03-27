@@ -1,0 +1,105 @@
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgb(218, 217, 217, 0.1);
+}
+
+main {
+  min-height: 100vh;
+}
+
+.wrapper {
+  min-height: 100vh;
+  padding-inline: 10vw;
+}
+
+.padding {
+  padding-inline: 10vw;
+}
+
+.jumbotron {
+  background-image: url("./assets/img/1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  object-fit: cover;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000000;
+  height: 100vh;
+  padding-top: 20vh;
+}
+.navbar {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.navbar-nav .nav-link {
+  color: #333;
+}
+.header-title {
+  font-size: clamp(30px, 5vw, 60px);
+}
+
+.title-begin {
+  color: #0055a4;
+}
+.title-mid {
+  color: #ffffff;
+}
+.title-end {
+  color: #ef4135;
+}
+.text-shadow {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+.jumbo-title {
+  font-size: clamp(24px, 5vw, 100px);
+}
+
+.jumbo-paragraph {
+  font-size: clamp(20px, 3vw, 30px);
+  color: white;
+}
+.nav-custom {
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  padding-inline: 10vw;
+}
+
+.not-index {
+  margin-top: 15vh;
+  padding-inline: 20px;
+}
+
+.card-container {
+  width: 100%;
+  padding-inline: 5%;
+}
+
+.card-container h3 {
+  margin-top: 20px;
+}
+
+.card {
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  min-height: 40vh;
+}
+
+@media screen and (max-width: 768px) {
+  .padding {
+    padding-inline: 10px;
+  }
+  .nav-custom {
+    padding-inline: 10px;
+  }
+
+  .card-container h3 {
+    margin-top: 10px;
+  }
+
+  .card {
+    margin-top: 20px;
+  }
+}

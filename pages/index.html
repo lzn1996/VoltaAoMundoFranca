@@ -10,68 +10,11 @@
       rel="stylesheet"
     />
     <!-- Custom CSS -->
-    <style>
-      .padding{
-        padding-inline: 10vw;
-      }
-      .jumbotron {
-        background-image: url('./assets/img/1.jpg') ;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        object-fit: cover;
-        color: #fff;
-        text-shadow: 2px 2px 4px #000000;
-        height: 100vh;
-        padding-top: 20vh;
-      }
-      body {
-        width: 100%;
-        overflow-x: hidden;
-      }
-      .navbar {
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-      }
-      .navbar-nav .nav-link {
-        color: #333;
-      }
-      .header-title{
-        font-size: clamp(30px, 5vw, 60px);
-      }
-
-      .title-begin {
-        color: #0055a4;
-      }
-      .title-mid {
-        color: #ffffff;
-      }
-      .title-end {
-        color: #ef4135;
-      }
-      .text-shadow {
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-      }
-      .jumbo-title{
-        font-size: clamp(24px, 5vw, 100px);
-      }
-
-      .jumbo-paragraph{
-        font-size: clamp(20px, 3vw, 30px);
-        color: white;
-      }
-      .nav-custom{
-        backdrop-filter: blur(5px);
-        display: flex;
-        align-items: center;
-        padding-inline: 10vw;
-      }
-
-    </style>
-    <link rel="preload" href="./assets/img/1.jpg" as="image" />
-    <link rel="preload" href="./assets/img/2.jpg" as="image" />
-    <link rel="preload" href="./assets/img/3.jpg" as="image" />
-    <link rel="preload" href="./assets/img/4.jpg" as="image" />
+    <link rel="preload" href="../assets/" as="image" />
+    <link rel="preload" href="../assets/img/2.jpg" as="image" />
+    <link rel="preload" href="../assets/img/3.jpg" as="image" />
+    <link rel="preload" href="../assets/img/4.jpg" as="image" />
+    <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     <!-- Navbar -->
@@ -79,13 +22,14 @@
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
     >
     <div class="d-flex justify-content-between align-items-center w-100 flex-column flex-lg-row">
-      <div>
-
-        <h1 href="#"><span class="header-title title-begin text-shadow">Fr</span
-          ><span class="header-title title-mid text-shadow">an</span
-          ><span class="header-title title-end text-shadow">ça</span></a
-        >
-      </div>
+      <a href="/" class="text-decoration-none">
+        <div>
+          <h1 class="d-flex align-items-center "><span class="header-title title-begin text-shadow">Fr</span
+            ><span class="header-title title-mid text-shadow">an</span
+            ><span class="header-title title-end text-shadow">ça</span></a
+          >
+        </div>
+      </a>
       </h1>
       <button
         class="navbar-toggler "
@@ -100,29 +44,30 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto text-white">
+          <li class="nav-item">
+            <a
+              class="nav-link text-white text-shadow display-5"
+              href="/pages/index.html"
+              >Início</a
+            >
+          </li>
           <li class="nav-item active">
             <a
               class="nav-link text-white text-shadow display-5"
-              href="#"
-              >Início <span class="sr-only">(current)</span></a
+              href="/pages/onde-ir.html"
+              >Onde ir <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
             <a
               class="nav-link text-white text-shadow display-5"
-              href="#"
-              >Sobre</a
+              href="/pages/o-que-fazer.html"
+              >O que fazer</a
             >
           </li>
+
           <li class="nav-item">
-            <a
-              class="nav-link text-white text-shadow display-5"
-              href="#"
-              >Destinos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white text-shadow display-5" href="#"
+            <a class="nav-link text-white text-shadow display-5" href="/pages/contato.html"
               >Contato</a
             >
           </li>
@@ -130,6 +75,8 @@
       </div>
     </div>
     </nav>
+    <main>
+
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid">
       <div class="container text-center" style="width: 100%;">
@@ -165,6 +112,8 @@
 
     <div class="jumbotron"></div>
     <!-- Rodapé -->
+  </main>
+
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container text-center">
         <span class="text-muted"
@@ -177,6 +126,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="../index.js"></script>
   </body>
 </html>
