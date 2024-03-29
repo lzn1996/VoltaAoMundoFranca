@@ -17,3 +17,15 @@ const generateImage = () => {
 };
 
 setInterval(generateImage, 5000);
+
+$(document).ready(function () {
+  $(".navbar-collapse").on("show.bs.collapse", function () {
+    console.log("abriu");
+    $(".logo").addClass("show-border");
+  });
+
+  $(".navbar-collapse").on("hide.bs.collapse", function () {
+    console.log("fechou");
+    $(".logo").removeClass("show-border");
+  });
+});

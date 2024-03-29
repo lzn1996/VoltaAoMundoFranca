@@ -5,8 +5,18 @@ if (localStorage.getItem("contactList")) {
   contactList = JSON.parse(localStorage.getItem("contactList"));
 }
 
+function capitalizeFirstLetters(phrase) {
+  if (phrase) {
+    return phrase
+      .toLocaleLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+}
+
 form.addEventListener("submit", (e) => {
-  const name = e.target.elements.nome.value;
+  const name = capitalizeFirstLetters(e.target.elements.nome.value);
   const email = e.target.elements.email.value;
 
   contactList.push({ name, email });

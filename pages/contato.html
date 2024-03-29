@@ -14,11 +14,13 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent blur flex-row padding"
     >
-      <div class="d-flex justify-content-between w-100 flex-lg-row">
+      <div
+        class="d-flex justify-content-between w-100 flex-lg-row align-items-center"
+      >
         <a href="/pages/index.html" class="text-decoration-none">
-          <div>
+          <div class="logo logo-up">
             <h1>
               <span class="header-title title-begin text-shadow">Fr</span
               ><span class="header-title title-mid text-shadow">an</span
@@ -28,6 +30,7 @@
         </a>
         <div class="d-flex flex-column">
           <button
+            style="border: 1px solid white"
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -39,31 +42,34 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto text-white">
-              <li class="nav-item">
+            <ul
+              class="navbar-nav ml-auto text-light"
+              style="gap: 20px !important"
+            >
+              <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/index.html"
                   >Início</a
                 >
               </li>
-              <li class="nav-item active">
+              <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/onde-ir.html"
                   >Onde ir <span class="sr-only">(current)</span></a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/o-que-fazer.html"
                   >O que fazer</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item active d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/contato.html"
                   >Contato</a
                 >
@@ -79,7 +85,7 @@
     >
       <div class="row justify-content-center">
         <div class="col-12 mb-5">
-          <h2 class="display-5 text-center mb-5">Entre em contato conosco</h2>
+          <h2 class="display-5 text-center mb-5">Deixe seu contato</h2>
           <form action="/pages/contato.html">
             <div class="form-group">
               <label for="nome">Nome:</label>
@@ -91,7 +97,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="email">Email:</label>
+              <label for="email">E-mail:</label>
               <input
                 type="email"
                 class="form-control"

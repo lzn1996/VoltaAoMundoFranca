@@ -9,15 +9,21 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="preload" href="/assets/img/1.jpg" as="image" />
+    <link rel="preload" href="../assets/img/6.jpg" as="image" />
+    <link rel="preload" href="../assets/img/3.jpg" as="image" />
+    <link rel="preload" href="../assets/img/4.jpg" as="image" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent nav-custom flex-row"
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100 bg-transparent blur flex-row padding"
     >
-      <div class="d-flex justify-content-between w-100 flex-lg-row">
+      <div
+        class="d-flex justify-content-between w-100 flex-lg-row align-items-center"
+      >
         <a href="/pages/index.html" class="text-decoration-none">
-          <div>
+          <div class="logo logo-up">
             <h1>
               <span class="header-title title-begin text-shadow">Fr</span
               ><span class="header-title title-mid text-shadow">an</span
@@ -27,6 +33,7 @@
         </a>
         <div class="d-flex flex-column">
           <button
+            style="border: 1px solid white"
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -38,31 +45,34 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto text-white">
-              <li class="nav-item">
+            <ul
+              class="navbar-nav ml-auto text-light"
+              style="gap: 20px !important"
+            >
+              <li class="nav-item active d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/index.html"
                   >Início</a
                 >
               </li>
-              <li class="nav-item active">
+              <li class="nav-item active d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/onde-ir.html"
                   >Onde ir <span class="sr-only">(current)</span></a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/o-que-fazer.html"
                   >O que fazer</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-white text-shadow list"
+                  class="nav-link text-light text-shadow list"
                   href="/pages/contato.html"
                   >Contato</a
                 >
@@ -74,15 +84,124 @@
     </nav>
     <main class="not-index">
       <section class="container-fluid padding">
-        <h1 class="display-5 title-begin">
+        <h1 class="title-begin mb-3 mb-md-5 place-title">
           Descubra lugares legais para você visitar<span class="title-end"
             >!</span
           >
         </h1>
-        <div class="row d-flex justify-content-between">
-          <div class="col-12 card-container my-4 bg-success">
-            <h3 class="display-4 text-white jumbo-title">Auvergne</h3>
-            <div class="card shadow"></div>
+        <div
+          class="container-fluid d-flex flex-column"
+          style="gap: 10vh; padding-bottom: 20vh"
+        >
+          <!-- eiffel -->
+          <div
+            class="row d-flex justify-content-between animated-leavin"
+            style="background-color: #111725"
+          >
+            <div class="col-12 p-3 p-xl-5">
+              <h3 class="display-4 place-title text-white">
+                Torre Eiffel, Paris
+              </h3>
+              <div class="d-flex shoadow flex-column">
+                <div class="shadow bg-white p-4 rounded">
+                  <p class="place-paragraph">
+                    Um ícone globalmente reconhecido e um marco emblemático da
+                    França, a Torre Eiffel é uma visita obrigatória para
+                    qualquer pessoa que visite Paris. Além de sua impressionante
+                    estrutura de ferro, os visitantes podem subir até o topo
+                    para desfrutar de vistas deslumbrantes da cidade das luzes,
+                    especialmente ao pôr do sol.
+                  </p>
+                  <img
+                    src="../assets/img/1.jpg"
+                    alt="Torre Eiffel"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- versalhes -->
+          <div
+            class="row d-flex justify-content-between animated-leavin"
+            style="background-color: #b18b35"
+          >
+            <div class="col-12 p-3 p-xl-5">
+              <h3 class="display-4 place-title text-white">
+                Palácio de Versalhes, Versalhes
+              </h3>
+              <div class="d-flex shoadow flex-column">
+                <div class="shadow bg-white p-4 rounded">
+                  <p class="place-paragraph">
+                    Uma obra-prima da arquitetura e um testemunho do luxo da
+                    monarquia francesa, o Palácio de Versalhes é uma visita
+                    obrigatória para os entusiastas da história e da arte. Os
+                    visitantes podem explorar os suntuosos salões, os
+                    deslumbrantes jardins e aprender sobre a rica história do
+                    local.
+                  </p>
+                  <img
+                    src="../assets/img/6.jpg"
+                    alt="palácio de versalhes"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- louvre -->
+          <div
+            class="row d-flex justify-content-between animated-leavin"
+            style="background-color: #a2b9d3"
+          >
+            <div class="col-12 p-3 p-xl-5">
+              <h3 class="display-4 place-title text-black">
+                Museu do Louvre, Paris
+              </h3>
+              <div class="d-flex shoadow flex-column">
+                <div class="shadow bg-white p-4 rounded">
+                  <p class="place-paragraph">
+                    Uma obra-prima da arquitetura e um testemunho do luxo da
+                    monarquia francesa, o Palácio de Versalhes é uma visita
+                    obrigatória para os entusiastas da história e da arte. Os
+                    visitantes podem explorar os suntuosos salões, os
+                    deslumbrantes jardins e aprender sobre a rica história do
+                    local.
+                  </p>
+                  <img
+                    src="../assets/img/3.jpg"
+                    alt="museu do louvre"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- sena -->
+          <div
+            class="row d-flex justify-content-between animated-leavin"
+            style="background-color: #fcf6d5"
+          >
+            <div class="col-12 p-3 p-xl-5">
+              <h3 class="display-4 place-title text-black">Rio Sena, Paris</h3>
+              <div class="d-flex shadow flex-column">
+                <div class="shadow bg-white p-4 rounded">
+                  <p class="place-paragraph">
+                    Cortando o coração de Paris, o Rio Sena é uma das principais
+                    atrações da cidade, oferecendo cruzeiros encantadores que
+                    proporcionam vistas deslumbrantes de monumentos famosos,
+                    como o Louvre, a Catedral de Notre-Dame e a Torre Eiffel.
+                    Suas margens também são ideais para passeios relaxantes,
+                    picnics e contemplação da paisagem urbana parisiense.
+                  </p>
+                  <img
+                    src="../assets/img/4.jpg"
+                    alt="rio sena"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
