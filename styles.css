@@ -103,7 +103,7 @@ main {
 }
 
 .place-title {
-  font-size: clamp(20px, 10vw, 100px);
+  font-size: clamp(20px, 7vw, 50px);
 }
 
 .place-paragraph {
@@ -118,6 +118,15 @@ main {
 
 .white-text-shadow {
   text-shadow: 4px 4px 4px rgb(255, 255, 255);
+}
+
+img {
+  transition: scale 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+img:hover {
+  scale: 1.02;
 }
 
 @media screen and (max-width: 768px) {
