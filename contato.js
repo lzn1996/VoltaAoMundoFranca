@@ -1,8 +1,8 @@
 const form = document.querySelector("form");
 const contactTableBody = document.querySelector("#contactTableBody");
+const clearContacts = document.querySelector("#clearContacts");
 
 let contactList = [];
-
 if (localStorage.getItem("contactList")) {
   contactList = JSON.parse(localStorage.getItem("contactList"));
 }
@@ -31,12 +31,7 @@ form.addEventListener("submit", (e) => {
 
   contactTableBody.innerHTML = `
   <tr>
-  <td class='text-centerr'>
-  <div class="spinner-border text-center" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  </td>
-  <td class='text-centerr'>
+  <td class='text-center' colspan='2'>
   <div class="spinner-border text-center" role="status">
     <span class="sr-only">Loading...</span>
   </div>
@@ -61,3 +56,25 @@ form.addEventListener("submit", (e) => {
     });
   }, 2000);
 });
+contactTableBody.innerHTML = "";
+
+contactList.forEach((contact) => {
+  const tr = document.createElement("tr");
+  const tdName = document.createElement("td");
+  const tdEmail = document.createElement("td");
+
+  tdName.textContent = contact.name;
+  tdEmail.textContent = contact.email;
+
+  tr.appendChild(tdName);
+  tr.appendChild(tdEmail);
+
+  contactTableBody.appendChild(tr);
+});
+
+if (contactList.length === 0) {
+  contactTableBody.innerHTML = `
+  <tr>
+  <td class='text-center' colspan='2'>Nenhum contato salvo até o momento.</td>
+  </tr>`;
+}
