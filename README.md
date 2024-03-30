@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este é meu projeto "Volta ao Mundo - França". O site será desenvolvido utilizando Bootstrap e outras tecnologias para garantir responsividade e uma experiência agradável aos usuários em diferentes dispositivos.
+Este é meu projeto "Volta ao Mundo - França". Um site que será desenvolvido utilizando Bootstrap e outras tecnologias para garantir responsividade e uma experiência agradável aos usuários em diferentes dispositivos.
 
 ## Objetivo
 
