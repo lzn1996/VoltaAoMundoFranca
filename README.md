@@ -19,10 +19,10 @@ O objetivo deste projeto é proporcionar uma imersão na cultura francesa atrav�
 Contribuições são bem-vindas! Se você deseja colaborar com o projeto "Volta ao Mundo - França", siga estas etapas:
 
 1. Faça um fork do repositório.
-2. Crie sua branch de recurso (`git checkout -b feature/SuaFeature`).
+2. Crie sua branch (`git checkout -b feature/SuaFeature`).
 3. Faça commit de suas alterações (`git commit -am 'Adicione sua feature'`).
 4. Faça push para a branch (`git push origin feature/SuaFeature`).
-5. Abra uma solicitação pull.
+5. Abra uma pull request.
 
 ## Autor
 
