@@ -18,6 +18,8 @@ function capitalizeFirstLetters(phrase) {
 }
 
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
   const name = capitalizeFirstLetters(e.target.elements.nome.value);
   const email = e.target.elements.email.value;
 
@@ -26,18 +28,36 @@ form.addEventListener("submit", (e) => {
   contactList.push({ name, email });
 
   localStorage.setItem("contactList", JSON.stringify(contactList));
-});
 
-contactList.forEach((contact) => {
-  const tr = document.createElement("tr");
-  const tdName = document.createElement("td");
-  const tdEmail = document.createElement("td");
+  contactTableBody.innerHTML = `
+  <tr>
+  <td class='text-centerr'>
+  <div class="spinner-border text-center" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </td>
+  <td class='text-centerr'>
+  <div class="spinner-border text-center" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </td>
+  </tr>`;
 
-  tdName.textContent = contact.name;
-  tdEmail.textContent = contact.email;
+  setTimeout(() => {
+    contactTableBody.innerHTML = "";
 
-  tr.appendChild(tdName);
-  tr.appendChild(tdEmail);
+    contactList.forEach((contact) => {
+      const tr = document.createElement("tr");
+      const tdName = document.createElement("td");
+      const tdEmail = document.createElement("td");
 
-  contactTableBody.appendChild(tr);
+      tdName.textContent = contact.name;
+      tdEmail.textContent = contact.email;
+
+      tr.appendChild(tdName);
+      tr.appendChild(tdEmail);
+
+      contactTableBody.appendChild(tr);
+    });
+  }, 2000);
 });

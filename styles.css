@@ -77,9 +77,9 @@ main {
 }
 
 .blur {
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(5px);
   width: 100%;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .not-index {
@@ -126,7 +126,7 @@ img {
 }
 
 img:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 @media screen and (max-width: 768px) {
@@ -211,5 +211,42 @@ img:hover {
   100% {
     opacity: 1;
     scale: 1;
+  }
+}
+
+.animation-typing {
+  display: inline;
+  color: hsl(0 0% 0% / 0.1);
+  background-image: linear-gradient(90deg, black, black);
+  background-clip: text;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  animation: typing linear forwards;
+  animation-timeline: view();
+  animation-range-end: 50%;
+}
+
+@keyframes typing {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.animation-typing-teste {
+  display: inline;
+  color: hsl(0 0% 0% / 0.1);
+  background-image: linear-gradient(90deg, black, black);
+  background-clip: text;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  animation: typing-teste linear forwards;
+  animation-timeline: view();
+  animation-range-start: 10%;
+  animation-range-end: 65%;
+}
+
+@keyframes typing-teste {
+  to {
+    background-size: 100% 100%;
   }
 }
