@@ -1,4 +1,6 @@
 const form = document.querySelector("form");
+const contactTableBody = document.querySelector("#contactTableBody");
+
 let contactList = [];
 
 if (localStorage.getItem("contactList")) {
@@ -19,12 +21,12 @@ form.addEventListener("submit", (e) => {
   const name = capitalizeFirstLetters(e.target.elements.nome.value);
   const email = e.target.elements.email.value;
 
+  if (!name || !email) return;
+
   contactList.push({ name, email });
 
   localStorage.setItem("contactList", JSON.stringify(contactList));
 });
-
-const contactTableBody = document.querySelector("#contactTableBody");
 
 contactList.forEach((contact) => {
   const tr = document.createElement("tr");
