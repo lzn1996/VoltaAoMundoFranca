@@ -38,7 +38,7 @@ main {
   object-fit: cover;
   color: #fff;
   text-shadow: 2px 2px 4px #000000;
-  height: 40vh;
+  height: 30vh;
   padding-top: 20vh;
 }
 
@@ -150,6 +150,7 @@ img:hover {
   font-size: clamp(16px, 3vw, 30px);
   margin-block: 5vh;
 }
+
 .space {
   width: 100%;
   height: 20vh;
@@ -257,6 +258,11 @@ img:hover {
   }
 }
 
+.coin {
+  margin-bottom: 10vh;
+  min-height: 60vh;
+}
+
 .animation-typing-coin {
   display: inline;
   color: hsl(0 0% 0% / 0.1);
@@ -266,11 +272,29 @@ img:hover {
   background-repeat: no-repeat;
   animation: typing-teste linear forwards;
   animation-timeline: view();
-  animation-range-end: 50%;
+  animation-range-end: 10%;
+  min-height: 50vh !important;
 }
 
 @keyframes typing-coin {
   to {
     background-size: 100% 100%;
+  }
+}
+
+.animated-appear {
+  animation: appear 1s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range-end: 50%;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

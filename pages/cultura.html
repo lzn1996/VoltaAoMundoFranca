@@ -46,35 +46,35 @@
             >
               <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link list text-dark-emphasis text-shadow"
-                  href="/pages/index.html"
+                  class="nav-link link-underline list text-dark-emphasis text-shadow"
+                  href="../index.html"
                   >Início</a
                 >
               </li>
               <li class="nav-item active d-flex justify-content-center">
                 <a
-                  class="nav-link text-dark-emphasis list text-shadow"
+                  class="nav-link link-underline text-dark-emphasis list text-shadow"
                   href="/pages/cultura.html"
                   >Cultura</a
                 >
               </li>
               <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-dark-text-dark-emphasis list text-shadow"
+                  class="nav-link link-underline text-dark-text-dark-emphasis list text-shadow"
                   href="/pages/onde-ir.html"
                   >Onde ir <span class="sr-only">(current)</span></a
                 >
               </li>
               <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-dark-emphasis list text-shadow"
+                  class="nav-link link-underline text-dark-emphasis list text-shadow"
                   href="/pages/historia.html"
                   >História</a
                 >
               </li>
               <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link text-dark-emphasis list text-shadow"
+                  class="nav-link link-underline text-dark-emphasis list text-shadow"
                   href="/pages/contato.html"
                   >Contato</a
                 >
@@ -85,13 +85,47 @@
       </div>
     </nav>
     <main class="not-index">
-      <section class="container-fluid padding" style="padding-top: 10vh">
-        <div class="row" style="display: flex; gap: 20vh">
-          <div class="col-12">
-            <h2
-              class="text-center animated-comin font-weight-bold place-title"
-              style="margin-bottom: 100px"
+      <section class="container-fluid padding">
+        <ul
+          class="nav nav-tabs d-flex justify-content-start justify-content-xl-between"
+        >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#intro"
+              >Introdução</a
             >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#lingua">Língua Francesa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#arte">Belas-artes e música</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#museu" tabindex="-1">Museus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#costura" tabindex="-1">Alta costura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gastronomia" tabindex="-1"
+              >Gastronomia</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#literatura" tabindex="-1">Literatura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#folclore" tabindex="-1"
+              >Folclore Francês</a
+            >
+          </li>
+        </ul>
+
+        <div class="row">
+          <div id="intro" class="space"></div>
+
+          <div class="col-12">
+            <h2 class="text-center animated-comin font-weight-bold place-title">
               Introdução
             </h2>
             <p class="place-paragraph">
@@ -103,6 +137,8 @@
               vestuário influenciaram grande parte das nações ao redor do mundo.
             </p>
           </div>
+          <div id="lingua" class="space"></div>
+
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -120,6 +156,8 @@
               aprendida no mundo, com quase 120 milhões de estudantes.
             </p>
           </div>
+          <div id="arte" class="space"></div>
+
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -139,6 +177,7 @@
               artistas como Berlioz, Offenbac e Débussy.
             </p>
           </div>
+          <div id="museu" class="space"></div>
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -151,6 +190,7 @@
               Monalisa, de Leonardo da Vinci.
             </p>
           </div>
+          <div id="costura" class="space"></div>
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -165,6 +205,7 @@
               foram nomes que contribuíram para esse fenômeno.
             </p>
           </div>
+          <div id="gastronomia" class="space"></div>
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -183,6 +224,8 @@
               champignons, cebolas e alho).
             </p>
           </div>
+          <div id="literatura" class="space"></div>
+
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -200,6 +243,8 @@
               Thomas.
             </p>
           </div>
+          <div id="folclore" class="space"></div>
+
           <div class="col-12">
             <h2
               class="text-center animated-comin font-weight-bold mb-5 place-title"
@@ -257,5 +302,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../linksStyle.js"></script>
+    <script src="../tabs.js"></script>
   </body>
 </html>

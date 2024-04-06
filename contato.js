@@ -33,7 +33,7 @@ form.addEventListener("submit", (e) => {
   <tr>
   <td class='text-center' colspan='2'>
   <div class="spinner-border text-center" role="status">
-    <span class="sr-only">Loading...</span>
+    <span class="sr-only">Carregando...</span>
   </div>
   </td>
   </tr>`;
@@ -65,6 +65,9 @@ contactList.forEach((contact) => {
 
   tdName.textContent = contact.name;
   tdEmail.textContent = contact.email;
+  tdName.setAttribute("class", "text-truncate");
+  tdName.setAttribute("style", "max-width: 100px;");
+  tdEmail.setAttribute("class", "text-truncate");
 
   tr.appendChild(tdName);
   tr.appendChild(tdEmail);
