@@ -14,16 +14,6 @@ O objetivo deste projeto é proporcionar uma imersão na cultura francesa atrav�
 - CSS3 (incluindo Bootstrap)
 - JavaScript (opcional, para interatividade adicional)
 
-## Como Contribuir
-
-Contribuições são bem-vindas! Se você deseja colaborar com o projeto "Volta ao Mundo - França", siga estas etapas:
-
-1. Faça um fork do repositório.
-2. Crie sua branch (`git checkout -b feature/SuaFeature`).
-3. Faça commit de suas alterações (`git commit -am 'Adicione sua feature'`).
-4. Faça push para a branch (`git push origin feature/SuaFeature`).
-5. Abra uma pull request.
-
 ## Autor
 
 Este projeto é mantido por [lzn1996](https://github.com/lzn1996).
