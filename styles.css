@@ -155,6 +155,7 @@ img:hover {
   width: 100%;
   height: 20vh;
 }
+
 @media screen and (max-width: 768px) {
   .padding {
     padding-inline: 10px;
@@ -250,17 +251,20 @@ img:hover {
   animation: typing linear forwards;
   animation-timeline: view();
   animation-range-end: 50%;
+  animation-range-start: 5%;
 }
 
-@keyframes typing {
-  to {
-    background-size: 100% 100%;
-  }
-}
-
-.coin {
-  margin-bottom: 10vh;
-  min-height: 60vh;
+.animation-typing-folklore {
+  display: inline;
+  color: hsl(0 0% 0% / 0.1);
+  background-image: linear-gradient(90deg, black, black);
+  background-clip: text;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  animation: typing linear forwards;
+  animation-timeline: view();
+  animation-range-start: 5%;
+  animation-range-end: 70%;
 }
 
 .animation-typing-coin {
@@ -270,13 +274,12 @@ img:hover {
   background-clip: text;
   background-size: 0% 100%;
   background-repeat: no-repeat;
-  animation: typing-teste linear forwards;
+  animation: typing linear forwards;
   animation-timeline: view();
-  animation-range-end: 10%;
-  min-height: 50vh !important;
+  animation-range-end: 35%;
 }
 
-@keyframes typing-coin {
+@keyframes typing {
   to {
     background-size: 100% 100%;
   }

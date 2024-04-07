@@ -12,14 +12,14 @@ const generateImage = () => {
   jumbotronContainer.forEach((item) => {
     item.setAttribute(
       "style",
-      `background-image: url(/assets/img/${rndInt}.jpg)`
+      `background-image: url(assets/img/${rndInt}.jpg)`
     );
   });
 
   jumbotronCopy.forEach((item) => {
     item.setAttribute(
       "style",
-      `background-image: url(/assets/img/${rndInt}.jpg)`
+      `background-image: url(assets/img/${rndInt}.jpg)`
     );
   });
 };
@@ -28,10 +28,10 @@ setInterval(generateImage, 5000);
 
 $(document).ready(function () {
   $(".navbar-collapse").on("show.bs.collapse", function () {
-    $(".logo").addClass("show-border");
+    $(".logo").removeClass("align-items-center");
   });
 
   $(".navbar-collapse").on("hide.bs.collapse", function () {
-    $(".logo").removeClass("show-border");
+    $(".logo").addClass("align-items-center");
   });
 });
