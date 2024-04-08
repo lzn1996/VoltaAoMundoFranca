@@ -17,7 +17,7 @@ main {
 }
 
 .jumbotron {
-  background-image: url("./assets/img/1.jpg");
+  background-image: url("assets/img/1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -30,7 +30,7 @@ main {
 }
 
 .jumbotron-copy {
-  background-image: url("./assets/img/1.jpg");
+  background-image: url("assets/img/1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
