@@ -10,6 +10,7 @@ navbarLinks.forEach((link) => {
       "style",
       "text-decoration: underline; text-underline-offset: 4px"
     );
+    return;
   }
 
   if (linkHref === pageName) {
