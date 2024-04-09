@@ -5,7 +5,7 @@ const pageName = currentPage.split("/").pop().split(".")[0];
 navbarLinks.forEach((link) => {
   const linkHref = link.href.split("/").pop().split(".")[0];
 
-  if (!linkHref) {
+  if (!linkHref && pageName === "index") {
     link.setAttribute(
       "style",
       "text-decoration: underline; text-underline-offset: 4px"
