@@ -1,5 +1,5 @@
 # Volta ao Mundo - França
-# <a href="https://voltaaomundofranca.netlify.app" target="_blank">voltaaomundolive.netlify.app</a>
+# <a href="https://voltaaomundofranca.netlify.app" target="_blank">voltaaomundofranca.netlify.app</a>
 ## Descrição
 
 Este é meu projeto "Volta ao Mundo - França". Um site que será desenvolvido utilizando Bootstrap e outras tecnologias para garantir responsividade e uma experiência agradável aos usuários em diferentes dispositivos.
