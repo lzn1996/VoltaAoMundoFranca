@@ -4,13 +4,15 @@ require "../vendor/autoload.php";
 
 use Ramsey\Uuid\Uuid;
 
-class Usuario {
+class Usuario
+{
     public $id;
     public $username;
     public $password;
     public $email;
 
-    public function __construct($username, $password, $email) {
+    public function __construct($username, $password, $email)
+    {
         $this->id = Uuid::uuid4();
         $this->username = strtolower(trim($username));
         $this->password = hash('sha256', $password);
@@ -21,7 +23,8 @@ class Usuario {
         }
     }
 
-    public function save() {
+    public function save()
+    {
         try {
             $conexao = Connection::connect();
             $stmt_check = $conexao->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
@@ -29,7 +32,7 @@ class Usuario {
             $stmt_check->execute();
             $result = $stmt_check->fetchColumn();
             if ($result > 0) {
-                return false; 
+                return false;
             }
             $stmt = $conexao->prepare("INSERT INTO users (id, username, password, email) VALUES (:id, :username, :password, :email)");
             $stmt->bindParam(':id', $this->id);
@@ -37,12 +40,12 @@ class Usuario {
             $stmt->bindParam(':password', $this->password);
             $stmt->bindParam(':email', $this->email);
 
-            if($this->email == NULL){
-                return false; 
-            } 
+            if ($this->email == NULL) {
+                return false;
+            }
 
             $stmt->execute();
-            return true; 
+            return true;
         } catch (PDOException $e) {
             return false;
         }

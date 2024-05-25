@@ -1,17 +1,19 @@
 <?php
-class Connection {
-    private static $host = 'localhost'; 
-    private static $dbname = 'volta_ao_mundo_franca'; // Nome do banco de dados
-    private static $username = 'root'; 
-    private static $password = '';
+class Connection
+{
+    private static $host = 'localhost';
+    private static $dbname = 'volta_ao_mundo_franca';
+    private static $port = '3312';
+    private static $username = 'root';
 
-    public static function connect() {
+    public static function connect()
+    {
         try {
-            $dsn = "mysql:host=" . self::$host . ";dbname=" . self::$dbname;
+            $dsn = "mysql:host=" . self::$host . ";port=" . self::$port . ";dbname=" . self::$dbname;
             $options = array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
-            $pdo = new PDO($dsn, self::$username, self::$password, $options);
+            $pdo = new PDO($dsn, self::$username,);
             return $pdo;
         } catch (PDOException $e) {
             echo "Erro de conexão: " . $e->getMessage();

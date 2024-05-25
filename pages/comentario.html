@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contato</title>
+    <title>Comentário</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -75,9 +75,9 @@
               </li>
               <li class="nav-item d-flex justify-content-center">
                 <a
-                  class="nav-link link-underline active text-dark-emphasis list text-shadow"
+                  class="nav-link link-underline text-dark-emphasis list text-shadow"
                   href=""
-                  >Contato</a
+                  >Comentário</a
                 >
               </li>
               <li class="nav-item d-flex justify-content-center">
@@ -98,10 +98,8 @@
     >
       <div class="row justify-content-center">
         <div class="col-12 mb-5">
-          <h2 class="display-5 text-center mb-5 place-title">
-            Deixe seu contato
-          </h2>
-          <form action="/pages/contato.html">
+          <h2 class="text-center mb-5 place-title">Deixe seu comentário</h2>
+          <form action="./gravar-comentario.php" method="POST">
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input
@@ -109,6 +107,7 @@
                 class="form-control"
                 id="nome"
                 placeholder="Digite seu nome"
+                name="nome"
               />
             </div>
             <div class="form-group">
@@ -118,27 +117,26 @@
                 class="form-control"
                 id="email"
                 placeholder="Digite seu email"
+                name="email"
               />
             </div>
+            <div class="form-group">
+              <label for="comentario">Comentário:</label>
+              <textarea
+                class="form-control"
+                id="comentario"
+                rows="3"
+                placeholder="Digite seu comentário"
+                name="comentario"
+              ></textarea>
+            </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary btn-lg">
+              <button type="submit" class="btn btn-primary btn-md mt-4">
                 Salvar
               </button>
             </div>
           </form>
         </div>
-      </div>
-      <div class="col-12 p-0">
-        <h2 class="display-5 text-center mb-5 place-title">Contatos salvos</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-            </tr>
-          </thead>
-          <tbody id="contactTableBody"></tbody>
-        </table>
       </div>
     </section>
 
@@ -154,7 +152,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../linksStyle.js"></script>
-
-    <script src="/contato.js"></script>
   </body>
 </html>
