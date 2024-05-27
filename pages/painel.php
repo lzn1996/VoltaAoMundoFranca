@@ -193,17 +193,18 @@ $commentaries = $commentary->getAllComentaries();
                         foreach ($commentaries as $commentary) {
                             $bgColor = $commentary['is_valid'] ? 'bg-success' : 'bg-danger';
                             $btnText = $commentary['is_valid'] ? 'Válido' : 'Validar';
+                            $action = $commentary['is_valid'] ? 'unvalidate' : 'validate';
                     ?>
                             <tr>
                                 <td><?php echo $commentary['guest_name']; ?></td>
                                 <td><?php echo $commentary['guest_email']; ?></td>
                                 <td class="comment-cell"><?php echo $commentary['commentary']; ?></td>
                                 <td><?php echo date('d/m/Y H:i', strtotime($commentary['created_at'])); ?></td>
-
                                 <td class="<?php echo $bgColor; ?>"><?php echo $commentary['is_valid'] ? 'Válido' : 'Inválido'; ?></td>
                                 <td>
-                                    <button class="btn btn-primary"><?php echo $btnText; ?></button>
-                                    <button class="btn btn-danger">Deletar</button>
+                                    <a href="validar-comentario.php?id=<?= $commentary['id']; ?>&action=<?= $action; ?>" class="btn btn-primary"><?php echo $btnText; ?></a>
+                                    <button class="btn btn-danger delete-comment">Deletar</button>
+                                    <input type="hidden" class="comment-id" value="<?= $commentary['id']; ?>">
                                 </td>
                             </tr>
                         <?php
@@ -236,23 +237,13 @@ $commentaries = $commentary->getAllComentaries();
         });
     </script>
     <script>
-        $(document).ready(function() {
-            $('.comment-cell').hover(function() {
-                var comentario = $(this).text();
-                var tooltip = $('.comment-tooltip');
-                tooltip.text(comentario);
+        document.querySelector('.btn-danger').addEventListener('click', function() {
+            var commentaryID = this.closest('tr').querySelector('.comment-id').value;
+            var confirmDelete = confirm("Tem certeza que deseja excluir este comentário?");
 
-                var leftPos = ($(window).width() - tooltip.outerWidth()) / 2;
-                var topPos = ($(window).height() - tooltip.outerHeight()) / 2;
-
-                tooltip.css({
-                    top: topPos,
-                    left: leftPos
-                });
-                tooltip.show();
-            }, function() {
-                $('.comment-tooltip').hide();
-            });
+            if (confirmDelete) {
+                window.location.href = "deletar-comentario.php?id=" + commentaryID;
+            }
         });
     </script>
 

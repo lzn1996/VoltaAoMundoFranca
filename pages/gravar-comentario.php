@@ -8,4 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $commentary = new Commentary();
-$commentary->save($guest_name, $guest_email, $guest_commentary);
+$isRegisterAttemptOk = $commentary->save($guest_name, $guest_email, $guest_commentary);
+
+
+
+if ($isRegisterAttemptOk) {
+    header("Location: ../pages/comentario.html?success=true");
+    exit();
+} else {
+    header("Location: ../pages/comentario.html?success=true");
+    exit();
+}

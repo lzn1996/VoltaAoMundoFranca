@@ -35,7 +35,7 @@ class Commentary
     {
         try {
             $connection = Connection::connect();
-            $stmt = $connection->prepare("SELECT guest_name, guest_email, commentary,  created_at, is_valid FROM commentaries");
+            $stmt = $connection->prepare("SELECT * FROM commentaries");
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -68,6 +68,20 @@ class Commentary
         try {
             $connection = Connection::connect();
             $stmt = $connection->prepare("UPDATE commentaries SET is_valid = 1 WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Erro ao validar o comentário: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function unvalidateCommentary($id)
+    {
+        try {
+            $connection = Connection::connect();
+            $stmt = $connection->prepare("UPDATE commentaries SET is_valid = 0 WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             return true;

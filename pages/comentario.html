@@ -99,7 +99,11 @@
       <div class="row justify-content-center">
         <div class="col-12 mb-5">
           <h2 class="text-center mb-5 place-title">Deixe seu comentário</h2>
-          <form action="./gravar-comentario.php" method="POST">
+          <form
+            action="./gravar-comentario.php"
+            class="container"
+            method="POST"
+          >
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input
@@ -152,5 +156,38 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../linksStyle.js"></script>
+    ...
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const successParam = params.get("success");
+
+        if (successParam !== null) {
+          const message =
+            successParam === "true"
+              ? "Comentário gravado com sucesso! Obrigado!"
+              : "Erro ao gravar o comentário.";
+          const alertClass =
+            successParam === "true" ? "alert-success" : "alert-danger";
+
+          const alertDiv = document.createElement("div");
+          alertDiv.className = "alert " + alertClass;
+          alertDiv.setAttribute("role", "alert");
+          alertDiv.innerHTML =
+            message +
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+
+          const container = document.querySelector(".container");
+          container.insertBefore(alertDiv, container.firstChild);
+
+          setTimeout(function () {
+            container.removeChild(alertDiv);
+            const urlWithoutSuccessParam = window.location.href.split("?")[0];
+            history.replaceState({}, document.title, urlWithoutSuccessParam);
+          }, 3000);
+        }
+      });
+    </script>
+    ...
   </body>
 </html>
