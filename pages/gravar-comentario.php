@@ -7,6 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $guest_commentary = $_POST['comentario'];
 }
 
+if (empty($guest_name) || empty($guest_email) || empty($guest_commentary)) {
+    header("Location: ../pages/comentario.php");
+    return;
+}
+
 $commentary = new Commentary();
 $isRegisterAttemptOk = $commentary->save($guest_name, $guest_email, $guest_commentary);
 

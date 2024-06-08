@@ -53,9 +53,17 @@ class Commentary
     {
         try {
             $connection = Connection::connect();
-            $stmt = $connection->prepare("SELECT * FROM commentaries WHERE is_valid = 1");
+
+            $stmt = $connection->prepare("SELECT c.id AS commentary_id, c.commentary, c.created_at AS commentary_date,
+             c.is_valid, c.guest_name, c.guest_email, r.response, r.created_at AS response_date
+            FROM commentaries c
+            LEFT JOIN commentaries_response r ON c.id = r.id_commentary
+            WHERE c.is_valid = 1");
+
             $stmt->execute();
+
             $validCommentaries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             return json_encode($validCommentaries);
         } catch (PDOException $e) {
             return json_encode(["error" => "Erro ao buscar os comentários válidos: " . $e->getMessage()]);

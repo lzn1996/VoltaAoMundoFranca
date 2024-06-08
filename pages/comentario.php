@@ -1,12 +1,12 @@
 <?php
 
 require "../model/Commentary.php";
+session_start();
 
 
 $commentaries = Commentary::getAllValidCommentaries();
 
 $commentaries_json = json_decode($commentaries, true);
-
 
 ?>
 
@@ -93,37 +93,27 @@ $commentaries_json = json_decode($commentaries, true);
       <div class="row justify-content-center">
         <div class="col-12">
           <h2 class="text-center mb-5 place-title">Comentários recebidos</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Comentário</th>
-                </tr>
-              </thead>
-              <tbody id="commentTableBody">
-                <?php
-                if (!empty($commentaries_json)) :
-                  foreach ($commentaries_json as $comment) :
-                ?>
-                    <tr>
-                      <td><?php echo $comment['guest_name']; ?></td>
-                      <td><?php echo $comment['guest_email']; ?></td>
-                      <td><?php echo $comment['commentary']; ?></td>
-                    </tr>
-                  <?php
-                  endforeach;
-                else :
-                  ?>
-                  <tr>
-                    <td colspan="3">Não há comentários disponíveis.</td>
-                  </tr>
-                <?php
-                endif;
-                ?>
-              </tbody>
-            </table>
+          <div class="row">
+            <?php if (!empty($commentaries_json)) : ?>
+              <?php foreach ($commentaries_json as $comment) : ?>
+                <div class="col-md-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><?php echo $comment['guest_name']; ?></h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><?php echo $comment['guest_email']; ?></h6>
+                      <p class="card-text"><?php echo $comment['commentary']; ?></p>
+                      <?php if (isset($_SESSION['user_email'])) : ?>
+                        <a href="./responder_comentario.php?id=<?php echo $comment['commentary_id']; ?>" class="btn btn-primary">Responder</a>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <div class="col-12">
+                <p>Não há comentários disponíveis.</p>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
