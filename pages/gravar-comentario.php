@@ -13,9 +13,9 @@ $isRegisterAttemptOk = $commentary->save($guest_name, $guest_email, $guest_comme
 
 
 if ($isRegisterAttemptOk) {
-    header("Location: ../pages/comentario.html?success=true");
+    header("Location: ../pages/comentario.php?success=true");
     exit();
 } else {
-    header("Location: ../pages/comentario.html?success=true");
+    header("Location: ../pages/comentario.php?success=true");
     exit();
 }

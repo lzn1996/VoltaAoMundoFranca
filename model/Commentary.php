@@ -49,7 +49,7 @@ class Commentary
         }
     }
 
-    public function getAllValidCommentaries()
+    public static function getAllValidCommentaries()
     {
         try {
             $connection = Connection::connect();

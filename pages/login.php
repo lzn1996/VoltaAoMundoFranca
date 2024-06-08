@@ -45,7 +45,7 @@ if (isset($_GET['user-invalid']) && $_GET['user-invalid'] === 'true') {
               <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./historia.html">História</a>
             </li>
             <li class="nav-item d-flex justify-content-center">
-              <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./comentario.html">Comentário</a>
+              <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./comentario.php">Comentário</a>
             </li>
             <li class="nav-item d-flex justify-content-center">
               <a class="nav-link link-underline link-underline text-dark-emphasis list text-shadow" href="">Painel</a>
