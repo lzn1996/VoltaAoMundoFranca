@@ -1,16 +1,11 @@
 <?php
-// Verifica se o usuário está logado, caso contrário, redireciona para a página de login
-// session_start();
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit;
-// }
-
+require "./checar-sessao.php";
 require "../model/Commentary.php";
 
 $commentary = new Commentary();
-$commentaries = $commentary->getAllComentaries();
+$commentaries_json = $commentary->getAllComentaries();
 
+$commentaries = json_decode($commentaries_json, true);
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +75,10 @@ $commentaries = $commentary->getAllComentaries();
             background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
+        .comment-cell {
+            min-width: 40vw;
+        }
+
         @media (min-width: 768px) {
             .sidebar {
                 left: 0;
@@ -100,37 +99,8 @@ $commentaries = $commentary->getAllComentaries();
             }
         }
 
-        .table-fixed {
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        .table-fixed thead th {
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        .table-fixed th,
-        .table-fixed td {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .comment-tooltip {
-            display: none;
-            position: absolute;
-            z-index: 999;
-            background-color: white;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .comment-cell {
-            cursor: no-drop;
+        .table-responsive {
+            overflow-x: auto;
         }
     </style>
 </head>
@@ -142,20 +112,20 @@ $commentaries = $commentary->getAllComentaries();
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-lg-none" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="comentarios.php">Comentários</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Sair</a>
-                </li>
-            </ul>
-    </nav>
+        <div class="d-lg-none " style='width: 100%'>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Início</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav class="sidebar-sticky">
@@ -163,20 +133,16 @@ $commentaries = $commentary->getAllComentaries();
                 <li class="nav-item">
                     <a class="nav-link" href="../index.html">Início</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/painel-comentario.html">Comentários</a>
-                </li>
+
             </ul>
         </nav>
     </div>
     <!-- Main Content -->
     <div class="content">
-        <h1 class="mt-4">Bem-vindo ao Painel Administrativo</h1>
+        <h1 class="mt-4">Bem-vindo(a)</h1>
         <p>Aqui você pode gerenciar os comentários do site.</p>
-
-        <div class="comment-tooltip"></div>
         <div class="table-responsive">
-            <table class="table table-bordered table-fixed">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Nome do Visitante</th>
@@ -191,7 +157,7 @@ $commentaries = $commentary->getAllComentaries();
                     <?php
                     if (!empty($commentaries)) {
                         foreach ($commentaries as $commentary) {
-                            $bgColor = $commentary['is_valid'] ? 'bg-success' : 'bg-danger';
+                            $textColor = $commentary['is_valid'] ? 'text-success' : 'text-danger';
                             $btnText = $commentary['is_valid'] ? 'Válido' : 'Validar';
                             $action = $commentary['is_valid'] ? 'unvalidate' : 'validate';
                     ?>
@@ -200,17 +166,19 @@ $commentaries = $commentary->getAllComentaries();
                                 <td><?php echo $commentary['guest_email']; ?></td>
                                 <td class="comment-cell"><?php echo $commentary['commentary']; ?></td>
                                 <td><?php echo date('d/m/Y H:i', strtotime($commentary['created_at'])); ?></td>
-                                <td class="<?php echo $bgColor; ?>"><?php echo $commentary['is_valid'] ? 'Válido' : 'Inválido'; ?></td>
+                                <td class="<?php echo $textColor; ?>"><?php echo $commentary['is_valid'] ? 'Válido' : 'Inválido'; ?></td>
                                 <td>
-                                    <a href="validar-comentario.php?id=<?= $commentary['id']; ?>&action=<?= $action; ?>" class="btn btn-primary"><?php echo $btnText; ?></a>
-                                    <button class="btn btn-danger delete-comment">Deletar</button>
-                                    <input type="hidden" class="comment-id" value="<?= $commentary['id']; ?>">
+                                    <div style='display: flex; gap: 4px; flex-wrap: wrap;'>
+
+                                        <a href="validar-comentario.php?id=<?= $commentary['id']; ?>&action=<?= $action; ?>" class="btn btn-primary"><?php echo $btnText; ?></a>
+                                        <button class="btn btn-danger delete-comment">Deletar</button>
+                                        <input type="hidden" class="comment-id" value="<?= $commentary['id']; ?>">
+                                    </div>
                                 </td>
                             </tr>
                         <?php
                         }
                     } else {
-                        // Caso não haja comentários disponíveis, exibe uma mensagem na tabela
                         ?>
                         <tr>
                             <td colspan="6">Não há comentários disponíveis.</td>
@@ -238,14 +206,15 @@ $commentaries = $commentary->getAllComentaries();
     </script>
     <script>
         document.querySelector('.btn-danger').addEventListener('click', function() {
-            var commentaryID = this.closest('tr').querySelector('.comment-id').value;
-            var confirmDelete = confirm("Tem certeza que deseja excluir este comentário?");
+            const commentaryID = this.closest('tr').querySelector('.comment-id').value;
+            const confirmDelete = confirm("Tem certeza que deseja excluir este comentário?");
 
             if (confirmDelete) {
                 window.location.href = "deletar-comentario.php?id=" + commentaryID;
             }
         });
     </script>
+
 
 </body>
 

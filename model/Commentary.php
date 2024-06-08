@@ -39,16 +39,15 @@ class Commentary
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                return $stmt->fetchAll();
+                $commentaries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($commentaries);
             } else {
-                return [];
+                return json_encode([]);
             }
         } catch (PDOException $e) {
-            echo "Erro ao buscar os comentários: " . $e->getMessage();
-            return false;
+            return json_encode(["error" => "Erro ao buscar os comentários: " . $e->getMessage()]);
         }
     }
-
 
     public function getAllValidCommentaries()
     {
@@ -56,10 +55,10 @@ class Commentary
             $connection = Connection::connect();
             $stmt = $connection->prepare("SELECT * FROM commentaries WHERE is_valid = 1");
             $stmt->execute();
-            return $stmt->fetchAll();
+            $validCommentaries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($validCommentaries);
         } catch (PDOException $e) {
-            echo "Erro ao buscar os comentários: " . $e->getMessage();
-            return false;
+            return json_encode(["error" => "Erro ao buscar os comentários válidos: " . $e->getMessage()]);
         }
     }
 

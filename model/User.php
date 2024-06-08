@@ -4,18 +4,16 @@ require "../vendor/autoload.php";
 
 use Ramsey\Uuid\Uuid;
 
-class Usuario
+class User
 {
     public $id;
-    public $username;
     public $password;
     public $email;
 
-    public function __construct($username, $password, $email)
+    public function __construct($password, $email)
     {
         $this->id = Uuid::uuid4();
-        $this->username = strtolower(trim($username));
-        $this->password = hash('sha256', $password);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->email = $email;
         } else {
@@ -34,9 +32,8 @@ class Usuario
             if ($result > 0) {
                 return false;
             }
-            $stmt = $conexao->prepare("INSERT INTO users (id, username, password, email) VALUES (:id, :username, :password, :email)");
+            $stmt = $conexao->prepare("INSERT INTO users (id, password, email) VALUES (:id, :password, :email)");
             $stmt->bindParam(':id', $this->id);
-            $stmt->bindParam(':username', $this->username);
             $stmt->bindParam(':password', $this->password);
             $stmt->bindParam(':email', $this->email);
 
@@ -49,5 +46,25 @@ class Usuario
         } catch (PDOException $e) {
             return false;
         }
+    }
+
+    public static function authenticate($email, $password)
+    {
+        try {
+            $conexao = Connection::connect();
+            $stmt = $conexao->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                if (password_verify($password, $user['password'])) {
+                    return $user;
+                }
+            }
+        } catch (PDOException $e) {
+        }
+
+        return null;
     }
 }

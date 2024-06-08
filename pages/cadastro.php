@@ -1,16 +1,17 @@
 <?php
-require "../model/Usuario.php";
+require "../model/User.php";
 
 
 $successMsg = '';
 $errorMsg = '';
 
-if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
-  $username = $_POST['username'];
+
+
+if (isset($_POST['password']) && isset($_POST['email'])) {
   $password = $_POST['password'];
   $email = $_POST['email'];
 
-  $user = new Usuario($username, $password, $email);
+  $user = new User($password, $email);
   $isRegisterAttemptOk = $user->save();
 
   if ($isRegisterAttemptOk) {
@@ -21,22 +22,16 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
     $successMsg = '';
   }
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onde ir</title>
-  <!-- Bootstrap CSS -->
+  <title>Login</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="preload" href="../assets/img/1.jpg" as="image" />
-  <link rel="preload" href="../assets/img/6.jpg" as="image" />
-  <link rel="preload" href="../assets/img/3.jpg" as="image" />
-  <link rel="preload" href="../assets/img/4.jpg" as="image" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -69,7 +64,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
               <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./historia.html">História</a>
             </li>
             <li class="nav-item d-flex justify-content-center">
-              <a class="nav-link link-underline link-underline text-dark-emphasis list text-shadow" href="./comentario.html">Comentário</a>
+              <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./comentario.html">Comentário</a>
             </li>
             <li class="nav-item d-flex justify-content-center">
               <a class="nav-link link-underline link-underline text-dark-emphasis list text-shadow" href="">Painel</a>
@@ -79,33 +74,43 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
       </div>
     </div>
   </nav>
-  <main class="not-index container-fluid">
-    <section class="d-flex flex-column align-items-center mt-3" style="gap:10vh">
-      <h2 class="mt-4">Criar conta para ADMIN</h2>
-      <?php if ($successMsg != '') echo "<p style='color: green'>$successMsg</p>"; ?>
-      <?php if ($errorMsg != '') echo "<p style='color: red'>$errorMsg</p>"; ?>
-      <form method="post" action="#">
-        <label for="username">Nome de Usuário</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="email">E-mail</label><br>
-        <input type="email" id="email" name="email" required><br>
-        <label for="password">Senha</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <div style="margin-top: -20px; display: flex; justify-content: flex-end">
+  <main class="not-index container-fluid ">
+    <section class="container-fluid wrapper not-index" style="gap:10vh;padding-inline: 10vw">
+      <h2 class="place-title text-center">Criar uma conta de Admin</h2>
+      <?php if (!empty($errorMsg)) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <?php echo $errorMsg; ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($successMsg)) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <?php echo $successMsg; ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
+      <form method='POST' class="mt-5" action="#">
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="text" class="form-control" id="email" placeholder="Digite seu e-mail" name="email" />
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" />
+        </div>
+        <div style="margin-top: -10px; display: flex; justify-content: flex-end">
           <a href="./login.php">Fazer login</a>
         </div>
         <div class="d-flex justify-content-center">
-          <input type="submit" class="btn btn-primary btn-md mt-4" value="Salvar">
+          <button type="submit" class="btn btn-primary btn-ld mt-4">
+            Criar
+          </button>
         </div>
-
-
       </form>
-      <div id="loadingIndicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Carregando...</span>
-        </div>
-        <span>Carregando...</span>
-      </div>
 
     </section>
   </main>
@@ -115,7 +120,6 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
       <span class="text-muted">© 2024 Luan DSM Fatec Itapira - Todos os direitos reservados.</span>
     </div>
   </footer>
-  <!-- Bootstrap JS e jQuery (opcional, se necessário) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

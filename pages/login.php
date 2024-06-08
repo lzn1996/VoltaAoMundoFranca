@@ -1,5 +1,10 @@
 <?php
+$failedInAuthenticationErrorMessage = '';
+if (isset($_GET['user-invalid']) && $_GET['user-invalid'] === 'true') {
+  $failedInAuthenticationErrorMessage = "Usuário ou senha inválidos. Por favor, digite corretamente.";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -52,16 +57,23 @@
   </nav>
   <main class="not-index container-fluid ">
     <section class="container-fluid wrapper not-index" style="gap:10vh;padding-inline: 10vw">
-      <h2 class="place-title text-center">Acesse o painel</h2>
-      <?php if (isset($error)) echo "<p>$error</p>"; ?>
-      <form method='POST' class="mt-5" action="painel.php">
+      <h2 class="place-title text-center">Acessar o painel</h2>
+      <?php if (!empty($failedInAuthenticationErrorMessage)) : ?>
+        <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+          <?php echo $failedInAuthenticationErrorMessage; ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Fechar" onclick="removeErrorParam()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
+      <form method='POST' class="mt-5" action="validar-usuario.php">
         <div class="form-group">
           <label for="email">E-mail:</label>
-          <input type="text" class="form-control" id="email" placeholder="Digite seu e-mail" />
+          <input type="text" class="form-control" id="email" placeholder="Digite seu e-mail" name='email' />
         </div>
         <div class="form-group">
           <label for="password">Senha:</label>
-          <input type="password" class="form-control" id="password" placeholder="Digite sua senha" />
+          <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name='password' />
         </div>
         <div style="margin-top: -20px; display: flex; justify-content: flex-end">
           <a href="./cadastro.php" class='d-block mt-2'>Crie sua conta</a>
@@ -85,6 +97,12 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../linksStyle.js"></script>
+  <script>
+    function removeErrorParam() {
+      const urlWithoutParam = window.location.href.split('?')[0];
+      window.history.replaceState({}, document.title, urlWithoutParam);
+    }
+  </script>
 </body>
 
 </html>
