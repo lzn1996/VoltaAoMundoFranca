@@ -8,6 +8,10 @@ $commentaries = Commentary::getAllValidCommentaries();
 
 $commentaries_json = json_decode($commentaries, true);
 
+
+
+var_dump($commentaries_json);
+die();
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +114,7 @@ $commentaries_json = json_decode($commentaries, true);
                 </div>
               <?php endforeach; ?>
             <?php else : ?>
-              <div class="col-12">
+              <div class="col-12 text-center">
                 <p>Não há comentários disponíveis.</p>
               </div>
             <?php endif; ?>

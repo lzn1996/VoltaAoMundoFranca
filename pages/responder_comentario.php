@@ -1,5 +1,10 @@
 <?php
-// Aqui você pode incluir qualquer lógica necessária para obter os detalhes do comentário que está sendo respondido, se necessário
+require '../model/Commentary.php';
+$commentary_id = $_GET['id'];
+$commentary = new Commentary();
+$commentary_data = json_decode($commentary->getCommentary($commentary_id), true);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +49,7 @@
                             <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="./historia.html">História</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="">Comentário</a>
+                            <a class="nav-link link-underline text-dark-emphasis list text-shadow" href="../pages/comentario.php">Comentário</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
                             <a class="nav-link link-underline link-underline text-dark-emphasis list text-shadow" href="./login.php">Painel</a>
@@ -59,11 +64,16 @@
             <div class="row justify-content-center">
                 <div class="col-12 mb-5">
                     <h2 class="text-center mb-5 place-title">Responder Comentário</h2>
-                    <form action="#" class="container" method="POST">
+                    <form action="./salvar-resposta.php" method="POST">
                         <!-- Adicione aqui os campos do formulário para responder o comentário -->
+                        <div class="form-group">
+                            <label for="resposta">Comentário:</label>
+                            <textarea class="form-control" id="resposta" rows="3" placeholder="Digite sua resposta"><?= htmlspecialchars($commentary_data[0]['commentary']) ?></textarea>
+                        </div>
                         <div class="form-group">
                             <label for="resposta">Resposta:</label>
                             <textarea class="form-control" id="resposta" rows="3" placeholder="Digite sua resposta" name="resposta"></textarea>
+                            <input type="hidden" name="commentary_id" value="<?= $commentary_id ?>">
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary btn-md mt-4">

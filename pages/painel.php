@@ -158,7 +158,7 @@ $commentaries = json_decode($commentaries_json, true);
                     if (!empty($commentaries)) {
                         foreach ($commentaries as $commentary) {
                             $textColor = $commentary['is_valid'] ? 'text-success' : 'text-danger';
-                            $btnText = $commentary['is_valid'] ? 'Válido' : 'Validar';
+                            $btnText = $commentary['is_valid'] ? 'Invalidar' : 'Validar';
                             $action = $commentary['is_valid'] ? 'unvalidate' : 'validate';
                     ?>
                             <tr>
@@ -181,7 +181,7 @@ $commentaries = json_decode($commentaries_json, true);
                     } else {
                         ?>
                         <tr>
-                            <td colspan="6">Não há comentários disponíveis.</td>
+                            <td colspan="12" class=" text-center">Não há comentários disponíveis.</td>
                         </tr>
                     <?php
                     }

@@ -7,10 +7,10 @@ class Commentary
     public $guest_email;
     public $commentary;
 
-    public function save($username, $email, $commentary)
+    public function save($guestName, $email, $commentary)
     {
-        $this->id = uniqid(time(), true);
-        $this->guest_name = strtolower(trim($username));
+        $this->id = time();
+        $this->guest_name = strtolower(trim($guestName));
         $this->guest_email = $email;
         $this->commentary = $commentary;
 
@@ -28,6 +28,25 @@ class Commentary
         } catch (PDOException $e) {
             echo "Erro ao salvar o comentário: " . $e->getMessage();
             return false;
+        }
+    }
+
+    public function getCommentary($id)
+    {
+        try {
+            $connection = Connection::connect();
+            $stmt = $connection->prepare("SELECT * FROM commentaries WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $commentaries = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($commentaries);
+            } else {
+                return json_encode([]);
+            }
+        } catch (PDOException $e) {
+            return json_encode(["error" => "Erro ao buscar os comentários: " . $e->getMessage()]);
         }
     }
 
