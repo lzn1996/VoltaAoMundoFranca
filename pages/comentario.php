@@ -1,17 +1,11 @@
 <?php
 
 require "../model/Commentary.php";
-session_start();
-
 
 $commentaries = Commentary::getAllValidCommentaries();
 
 $commentaries_json = json_decode($commentaries, true);
 
-
-
-var_dump($commentaries_json);
-die();
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +61,11 @@ die();
     </div>
   </nav>
   <main>
-    <section class="container-fluid wrapper not-index" style="padding-inline: 10vw">
+    <section class="container-fluid wrapper" style="padding-inline: 10vw; margin-top: 15vh">
       <div class="row justify-content-center">
         <div class="col-12 mb-5">
           <h2 class="text-center mb-5 place-title">Deixe seu comentário</h2>
-          <form action="./gravar-comentario.php" class="container" method="POST">
+          <form action="./gravar-comentario.php" class="container p-0 p-lg-3" method="POST">
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" name="nome" />
@@ -93,9 +87,9 @@ die();
         </div>
       </div>
     </section>
-    <section class="container-fluid wrapper" style="padding-inline: 10vw; margin-top: -25vh">
+    <section class="container-fluid wrapper" style='margin-top: -30vh;'>
       <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-12 p-lg-5">
           <h2 class="text-center mb-5 place-title">Comentários recebidos</h2>
           <div class="row">
             <?php if (!empty($commentaries_json)) : ?>
@@ -110,6 +104,14 @@ die();
                         <a href="./responder_comentario.php?id=<?php echo $comment['commentary_id']; ?>" class="btn btn-primary">Responder</a>
                       <?php endif; ?>
                     </div>
+                    <?php if (!empty($comment['response'])) : ?>
+                      <div class="card-footer">
+                        <div class="mini-card">
+                          <p class="mb-0"><strong>Resposta:</strong> <?php echo $comment['response']; ?></p>
+                          <p class="mb-0"><strong>Respondido pelo ADM</strong><strong> em:</strong> <?php echo date('d/m/Y \à\s H:i', strtotime($comment['response_date'])); ?></p>
+                        </div>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </div>
               <?php endforeach; ?>

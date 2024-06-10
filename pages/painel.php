@@ -133,6 +133,9 @@ $commentaries = json_decode($commentaries_json, true);
                 <li class="nav-item">
                     <a class="nav-link" href="../index.html">Início</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Sair</a>
+                </li>
 
             </ul>
         </nav>

@@ -44,6 +44,7 @@ class User
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
             return false;
         }
     }
@@ -57,14 +58,14 @@ class User
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($user) {
-                if (password_verify($password, $user['password'])) {
-                    return $user;
-                }
+            if ($user && password_verify($password, $user['password'])) {
+                return $user;
+            } else {
+                return false;
             }
         } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            return false;
         }
-
-        return null;
     }
 }

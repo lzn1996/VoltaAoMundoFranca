@@ -1,8 +1,20 @@
 <?php
+
+session_start();
+
+if (isset($_SESSION['user_email'])) {
+  header("Location: ./painel.php");
+}
+
+require '../model/User.php';
+
 $failedInAuthenticationErrorMessage = '';
+
 if (isset($_GET['user-invalid']) && $_GET['user-invalid'] === 'true') {
   $failedInAuthenticationErrorMessage = "Usuário ou senha inválidos. Por favor, digite corretamente.";
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,9 +86,6 @@ if (isset($_GET['user-invalid']) && $_GET['user-invalid'] === 'true') {
         <div class="form-group">
           <label for="password">Senha:</label>
           <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name='password' />
-        </div>
-        <div style="margin-top: -20px; display: flex; justify-content: flex-end">
-          <a href="./cadastro.php" class='d-block mt-2'>Crie sua conta</a>
         </div>
         <div class="d-flex justify-content-center">
           <button type="submit" class="btn btn-primary btn-ld mt-4">
