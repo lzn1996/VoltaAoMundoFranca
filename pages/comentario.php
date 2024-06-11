@@ -1,6 +1,8 @@
 <?php
 
 require "../model/Commentary.php";
+session_start();
+
 
 $commentaries = Commentary::getAllValidCommentaries();
 
