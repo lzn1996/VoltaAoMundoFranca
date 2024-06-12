@@ -180,9 +180,9 @@ $commentaries = json_decode($commentaries_json, true);
                             $action = $commentary['is_valid'] ? 'unvalidate' : 'validate';
                     ?>
                             <tr>
-                                <td><?php echo $commentary['guest_name']; ?></td>
+                                <td><?php echo ucwords($commentary['guest_name']); ?></td>
                                 <td><?php echo $commentary['guest_email']; ?></td>
-                                <td class="comment-cell"><?php echo $commentary['commentary']; ?></td>
+                                <td class="comment-cell"><?php echo ucfirst($commentary['commentary']); ?></td>
                                 <td><?php echo date('d/m/Y H:i', strtotime($commentary['created_at'])); ?></td>
                                 <td class="<?php echo $textColor; ?>"><?php echo $commentary['is_valid'] ? 'Válido' : 'Inválido'; ?></td>
                                 <td>
@@ -223,14 +223,15 @@ $commentaries = json_decode($commentaries_json, true);
         });
     </script>
     <script>
-        document.querySelector('.delete-button').addEventListener('click', function() {
+        const delButton = document.querySelectorAll('.delete-button')
+        delButton.forEach(btn => btn.addEventListener('click', function() {
             const commentaryID = this.closest('tr').querySelector('.comment-id').value;
             const confirmDelete = confirm("Tem certeza que deseja excluir este comentário?");
 
             if (confirmDelete) {
                 window.location.href = "deletar-comentario.php?id=" + commentaryID;
             }
-        });
+        }));
 
         document.querySelector('.delete-all-button').addEventListener('click', function() {
             const teste = confirm("Tem certeza que deseja excluir TODOS OS COMENTÁRIOS?");

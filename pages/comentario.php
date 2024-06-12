@@ -139,9 +139,9 @@ $commentaries_json = json_decode($commentaries, true);
                 <div class="col-md-6 mb-4">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title"><?php echo $comment['guest_name']; ?></h5>
+                      <h5 class="card-title"><?php echo ucwords($comment['guest_name']); ?></h5>
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo $comment['guest_email']; ?></h6>
-                      <p class="card-text"><?php echo $comment['commentary']; ?></p>
+                      <p class="card-text"><?php echo ucfirst($comment['commentary']); ?></p>
                       <?php if (isset($_SESSION['user_email'])) : ?>
                         <a href="./responder_comentario.php?id=<?php echo $comment['commentary_id']; ?>" class="btn btn-primary">Responder</a>
                       <?php endif; ?>
@@ -154,7 +154,7 @@ $commentaries_json = json_decode($commentaries, true);
                         <div class="card-footer">
                           <div class="mini-card">
                             <p class="mb-0"><strong>Resposta:</strong> <?php echo $resposta['response']; ?></p>
-                            <p class="mb-0"><strong>Respondido pelo ADM</strong> em: <?php echo date('d/m/Y \à\s H:i', strtotime($resposta['response_date'])); ?></p>
+                            <p class="mb-0"><strong>Respondido pelo ADM em:</strong> <?php echo date('d/m/Y \à\s H:i', strtotime($resposta['response_date'])); ?></p>
                           </div>
                         </div>
                     <?php
@@ -185,7 +185,6 @@ $commentaries_json = json_decode($commentaries, true);
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../linksStyle.js"></script>
-  ...
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const params = new URLSearchParams(window.location.search);
@@ -220,7 +219,6 @@ $commentaries_json = json_decode($commentaries, true);
       }
     });
   </script>
-  ...
 </body>
 
 </html>
