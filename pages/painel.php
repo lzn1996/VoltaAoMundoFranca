@@ -1,11 +1,13 @@
 <?php
 require "./checar-sessao.php";
 require "../model/Commentary.php";
-
 $commentary = new Commentary();
 $commentaries_json = $commentary->getAllComentaries();
 
 $commentaries = json_decode($commentaries_json, true);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ $commentaries = json_decode($commentaries_json, true);
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <style>
         body {
             padding-top: 56px;
@@ -144,6 +146,19 @@ $commentaries = json_decode($commentaries_json, true);
     <div class="content">
         <h1 class="mt-4">Bem-vindo(a)</h1>
         <p>Aqui você pode gerenciar os comentários do site.</p>
+        <?php if (!empty($commentaries) && count($commentaries) > 1) : ?>
+            <a type="button" href="./validar-todos-comentarios.php" class="btn btn-primary btn-sm mb-3">
+                Validar todos os comentários
+            </a>
+            <a type="button" href="./invalidar-todos-comentarios.php" class="btn btn-danger btn-sm mb-3">
+                Invalidar todos os comentários
+            </a>
+            <button type="button" class="btn btn-danger btn-sm mb-3 delete-all-button">
+                Deletar todos os comentários
+            </button>
+
+
+        <?php endif; ?>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -174,7 +189,7 @@ $commentaries = json_decode($commentaries_json, true);
                                     <div style='display: flex; gap: 4px; flex-wrap: wrap;'>
 
                                         <a href="validar-comentario.php?id=<?= $commentary['id']; ?>&action=<?= $action; ?>" class="btn btn-primary"><?php echo $btnText; ?></a>
-                                        <button class="btn btn-danger delete-comment">Deletar</button>
+                                        <button class="btn btn-danger delete-button delete-comment">Deletar</button>
                                         <input type="hidden" class="comment-id" value="<?= $commentary['id']; ?>">
                                     </div>
                                 </td>
@@ -208,12 +223,20 @@ $commentaries = json_decode($commentaries_json, true);
         });
     </script>
     <script>
-        document.querySelector('.btn-danger').addEventListener('click', function() {
+        document.querySelector('.delete-button').addEventListener('click', function() {
             const commentaryID = this.closest('tr').querySelector('.comment-id').value;
             const confirmDelete = confirm("Tem certeza que deseja excluir este comentário?");
 
             if (confirmDelete) {
                 window.location.href = "deletar-comentario.php?id=" + commentaryID;
+            }
+        });
+
+        document.querySelector('.delete-all-button').addEventListener('click', function() {
+            const teste = confirm("Tem certeza que deseja excluir TODOS OS COMENTÁRIOS?");
+
+            if (teste) {
+                window.location.href = "deletar-todos-comentarios.php"
             }
         });
     </script>

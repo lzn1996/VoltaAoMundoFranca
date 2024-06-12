@@ -2,11 +2,25 @@
 
 require "../model/Commentary.php";
 session_start();
+$fileEmpty = '';
+$importSuccess = '';
 
+if (isset($_GET['empty'])) {
+  $fileEmpty = 'Selecione um arquivo JSON à ser importado.';
+}
+if (isset($_GET['import-success'])) {
+  $importSuccess = 'A importação foi feita com sucesso. Valide os comentários no painel.';
+}
 
 $commentaries = Commentary::getAllValidCommentaries();
 
 $commentaries_json = json_decode($commentaries, true);
+
+// echo "<pre>";
+// var_dump($commentaries_json);
+// echo "</pre>";
+// die();
+
 
 ?>
 
@@ -81,7 +95,7 @@ $commentaries_json = json_decode($commentaries, true);
               <textarea class="form-control" id="comentario" rows="3" placeholder="Digite seu comentário" name="comentario"></textarea>
             </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary btn-md mt-4">
+              <button type="submit" class="btn btn-primary btn-md mt-4 mb-4">
                 Salvar
               </button>
             </div>
@@ -92,7 +106,33 @@ $commentaries_json = json_decode($commentaries, true);
     <section class="container-fluid wrapper" style='margin-top: -30vh;'>
       <div class="row justify-content-center">
         <div class="col-12 p-lg-5">
-          <h2 class="text-center mb-5 place-title">Comentários recebidos</h2>
+          <!-- <h2 class="text-center mb-5 place-title">Comentários recebidos</h2> -->
+          <?php if (isset($_SESSION['user_email'])) : ?>
+            <div class="d-flex justify-content-center my-4">
+              <form action="./importar-json.php" method="post" enctype="multipart/form-data">
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="jsonFile" name="jsonFile">
+                  <button type="submit" class="btn btn-primary">Importar Comentários</button>
+                </div>
+                <?php if (!empty($fileEmpty)) : ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $fileEmpty; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+                <?php if (!empty($importSuccess)) : ?>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo $importSuccess; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+              </form>
+            </div>
+          <?php endif; ?>
           <div class="row">
             <?php if (!empty($commentaries_json)) : ?>
               <?php foreach ($commentaries_json as $comment) : ?>
@@ -106,14 +146,21 @@ $commentaries_json = json_decode($commentaries, true);
                         <a href="./responder_comentario.php?id=<?php echo $comment['commentary_id']; ?>" class="btn btn-primary">Responder</a>
                       <?php endif; ?>
                     </div>
-                    <?php if (!empty($comment['response'])) : ?>
-                      <div class="card-footer">
-                        <div class="mini-card">
-                          <p class="mb-0"><strong>Resposta:</strong> <?php echo $comment['response']; ?></p>
-                          <p class="mb-0"><strong>Respondido pelo ADM</strong><strong> em:</strong> <?php echo date('d/m/Y \à\s H:i', strtotime($comment['response_date'])); ?></p>
+                    <?php
+                    $responses = json_decode($comment['response'], true);
+                    if (!empty($responses)) :
+                      foreach ($responses as $resposta) :
+                    ?>
+                        <div class="card-footer">
+                          <div class="mini-card">
+                            <p class="mb-0"><strong>Resposta:</strong> <?php echo $resposta['response']; ?></p>
+                            <p class="mb-0"><strong>Respondido pelo ADM</strong> em: <?php echo date('d/m/Y \à\s H:i', strtotime($resposta['response_date'])); ?></p>
+                          </div>
                         </div>
-                      </div>
-                    <?php endif; ?>
+                    <?php
+                      endforeach;
+                    endif;
+                    ?>
                   </div>
                 </div>
               <?php endforeach; ?>

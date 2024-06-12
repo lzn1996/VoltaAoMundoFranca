@@ -12,7 +12,7 @@ class User
 
     public function __construct($password, $email)
     {
-        $this->id = Uuid::uuid4();
+        $this->id = time();
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->email = $email;
@@ -68,4 +68,19 @@ class User
             return false;
         }
     }
+
+    public static function countUsers()
+    {
+        try {
+            $conexao = Connection::connect();
+            $stmt = $conexao->prepare("SELECT COUNT(*) FROM users");
+            $stmt->execute();
+            $count = $stmt->fetchColumn();
+            return $count;
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }

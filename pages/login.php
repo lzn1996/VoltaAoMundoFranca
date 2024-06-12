@@ -7,6 +7,7 @@ if (isset($_SESSION['user_email'])) {
 }
 
 require '../model/User.php';
+$usersQuantity = User::countUsers();
 
 $failedInAuthenticationErrorMessage = '';
 
@@ -87,6 +88,16 @@ if (isset($_GET['user-invalid']) && $_GET['user-invalid'] === 'true') {
           <label for="password">Senha:</label>
           <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name='password' />
         </div>
+        <?php 
+        if($usersQuantity == 0){
+
+          echo "
+          <div style='margin-top: -10px; display: flex; justify-content: flex-end'>
+          <a href='./cadastro.php'>Crie sua conta</a>
+          </div>
+          ";
+        }
+        ?>
         <div class="d-flex justify-content-center">
           <button type="submit" class="btn btn-primary btn-ld mt-4">
             Entrar

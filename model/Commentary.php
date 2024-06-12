@@ -9,7 +9,7 @@ class Commentary
 
     public function save($guestName, $email, $commentary)
     {
-        $this->id = time();
+        $this->id = uniqid();
         $this->guest_name = strtolower(trim($guestName));
         $this->guest_email = $email;
         $this->commentary = $commentary;
@@ -73,11 +73,22 @@ class Commentary
         try {
             $connection = Connection::connect();
 
-            $stmt = $connection->prepare("SELECT c.id AS commentary_id, c.commentary, c.created_at AS commentary_date,
-             c.is_valid, c.guest_name, c.guest_email, r.response, r.created_at AS response_date
-            FROM commentaries c
-            LEFT JOIN commentaries_response r ON c.id = r.id_commentary
-            WHERE c.is_valid = 1");
+            $stmt = $connection->prepare('SELECT 
+            c.id AS commentary_id, 
+            c.commentary, 
+            c.created_at AS commentary_date, 
+            c.is_valid, 
+            c.guest_name, 
+            c.guest_email, 
+            CONCAT("[", GROUP_CONCAT(CONCAT(\'{"response":"\', REPLACE(r.response, \'"\', \'\\"\'), \'","response_date":"\', r.created_at, \'"}\') SEPARATOR ","), "]") AS response
+        FROM 
+            commentaries c
+        LEFT JOIN 
+            commentaries_response r ON c.id = r.id_commentary
+        WHERE 
+            c.is_valid = 1
+        GROUP BY 
+            c.id;');
 
             $stmt->execute();
 
@@ -128,6 +139,45 @@ class Commentary
             return true;
         } catch (PDOException $e) {
             echo "Erro ao deletar o comentário: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public static function deleteAll()
+    {
+        try {
+            $connection = Connection::connect();
+            $stmt = $connection->prepare("DELETE FROM commentaries");
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Erro ao deletar o comentário: " . $e->getMessage();
+            return false;
+        }
+    }
+
+
+    public static function validateAll()
+    {
+        try {
+            $connection = Connection::connect();
+            $stmt = $connection->prepare("UPDATE commentaries set is_valid = 1");
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Erro ao validar todos comentários: " . $e->getMessage();
+            return false;
+        }
+    }
+    public static function unvalidateAll()
+    {
+        try {
+            $connection = Connection::connect();
+            $stmt = $connection->prepare("UPDATE commentaries set is_valid = 0");
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Erro ao validar todos comentários: " . $e->getMessage();
             return false;
         }
     }

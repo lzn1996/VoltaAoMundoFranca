@@ -1,0 +1,53 @@
+[
+    {
+        "nome": "Carlos",
+        "email": "carlos.freitas@example.com",
+        "comentario": "Estou impressionado com a qualidade do conteúdo!"
+    },
+    {
+        "nome": "Fernanda",
+        "email": "fernanda.santos@example.com",
+        "comentario": "Seu site me ajudou muito a encontrar as informações que eu precisava."
+    },
+    {
+        "nome": "Lucas",
+        "email": "lucas.oliveira@example.com",
+        "comentario": "Muito obrigado pela iniciativa de compartilhar esse conhecimento!"
+    },
+    {
+        "nome": "Juliana",
+        "email": "juliana.almeida@example.com",
+        "comentario": "Parabéns pela organização e clareza das informações!"
+    },
+    {
+        "nome": "Pedro",
+        "email": "pedro.souza@example.com",
+        "comentario": "Excelente trabalho! Continuem assim, estou ansioso por mais conteúdo."
+    },
+    {
+        "nome": "Mariana",
+        "email": "mariana.lima@example.com",
+        "comentario": "Obrigado por disponibilizarem esse material de forma gratuita!"
+    },
+    {
+        "nome": "Rafael",
+        "email": "rafael.silva@example.com",
+        "comentario": "Seu site é uma fonte valiosa de informações, continue assim!"
+    },
+    {
+        "nome": "Amanda",
+        "email": "amanda.sousa@example.com",
+        "comentario": "Estou adorando navegar pelo seu site, está muito bem feito!"
+    },
+    {
+        "nome": "Gabriel",
+        "email": "gabriel.pereira@example.com",
+        "comentario": "Parabéns pelo conteúdo de qualidade e pela iniciativa de ajudar os usuários!"
+    },
+    {
+        "nome": "Larissa",
+        "email": "larissa.fernandes@example.com",
+        "comentario": "Seu site me ajudou a entender muitos conceitos que eu não conseguia antes."
+    }
+]
+
