@@ -21,7 +21,7 @@ O objetivo deste projeto é proporcionar uma imersão na cultura francesa atrav�
 - Importe o script SQL no banco criado (que está dentro da pasta /volta-ao-mundo-franca/sql/)
 - Abra o código no seu editor de código
 - Acesse o arquivo /model/Connection.php e altere as configurações de senha e porta correspondentes ao seu banco (o padrão é sem senha e porta 3306)
-- Abra o navegador, acesse "localhost/voltaaomundofranca
+- Abra o navegador, acesse "localhost/voltaaomundofranca"
 
 ## Autor
 
