@@ -4,6 +4,7 @@ require "../model/Commentary.php";
 session_start();
 $fileEmpty = '';
 $importSuccess = '';
+$notJsonMsg = '';
 
 if (isset($_GET['empty'])) {
   $fileEmpty = 'Selecione um arquivo JSON à ser importado.';
@@ -12,14 +13,13 @@ if (isset($_GET['import-success'])) {
   $importSuccess = 'A importação foi feita com sucesso. Valide os comentários no painel.';
 }
 
+if (isset($_GET['not-json'])) {
+  $notJsonMsg = 'O arquivo selecionado não é um arquivo JSON.';
+}
+
 $commentaries = Commentary::getAllValidCommentaries();
 
 $commentaries_json = json_decode($commentaries, true);
-
-// echo "<pre>";
-// var_dump($commentaries_json);
-// echo "</pre>";
-// die();
 
 
 ?>
@@ -78,7 +78,7 @@ $commentaries_json = json_decode($commentaries, true);
   </nav>
   <main>
     <section class="container-fluid wrapper" style="padding-inline: 10vw; margin-top: 15vh">
-      <div class="row justify-content-center">
+      <div class="row">
         <div class="col-12 mb-5">
           <h2 class="text-center mb-5 place-title">Deixe seu comentário</h2>
           <form action="./gravar-comentario.php" class="container p-0 p-lg-3" method="POST">
@@ -104,19 +104,27 @@ $commentaries_json = json_decode($commentaries, true);
       </div>
     </section>
     <section class="container-fluid wrapper" style='margin-top: -30vh;'>
-      <div class="row justify-content-center">
-        <div class="col-12 p-lg-5">
-          <!-- <h2 class="text-center mb-5 place-title">Comentários recebidos</h2> -->
+      <div class="row">
+        <div class="col-12 p-lg-5" style='display: flex; align-items:center; flex-direction: column'>
+          <h2 class="text-center mb-5 place-title">Comentários recebidos</h2>
           <?php if (isset($_SESSION['user_email'])) : ?>
-            <div class="d-flex justify-content-center my-4">
+            <div class="d-flex justify-content-center my-4" style='min-width: 300px'>
               <form action="./importar-json.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-3">
                   <input type="file" class="form-control" id="jsonFile" name="jsonFile">
-                  <button type="submit" class="btn btn-primary">Importar Comentários</button>
+                  <button type="submit" class="btn btn-primary">Importar</button>
                 </div>
                 <?php if (!empty($fileEmpty)) : ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?php echo $fileEmpty; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+                <?php if (!empty($notJsonMsg)) : ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $notJsonMsg; ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -136,7 +144,7 @@ $commentaries_json = json_decode($commentaries, true);
           <div class="row">
             <?php if (!empty($commentaries_json)) : ?>
               <?php foreach ($commentaries_json as $comment) : ?>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-4" style='min-width: 300px'>
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo ucwords($comment['guest_name']); ?></h5>
