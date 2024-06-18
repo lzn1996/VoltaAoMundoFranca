@@ -14,14 +14,6 @@ O objetivo deste projeto é proporcionar uma imersão na cultura francesa atrav�
 - CSS3 (incluindo Bootstrap)
 - JavaScript (opcional, para interatividade adicional)
 
-## Autor
-
-Este projeto é mantido por [lzn1996](https://github.com/lzn1996).
-
-## Licença
-
-Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
-
 ## Rodar o projeto
 
 - Faça o clone do repositório dentro da pasta htdocs do XAMPP.
@@ -30,3 +22,11 @@ Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licens
 - Abra o código no seu editor de código
 - Acesse o arquivo /model/Connection.php e altere as configurações de senha e porta correspondentes ao seu banco (o padrão é sem senha e porta 3306)
 - Abra o navegador, acesse "localhost/voltaaomundofranca
+
+## Autor
+
+Este projeto é mantido por [lzn1996](https://github.com/lzn1996).
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
