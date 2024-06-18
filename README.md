@@ -21,3 +21,12 @@ Este projeto é mantido por [lzn1996](https://github.com/lzn1996).
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+
+## Rodar o projeto
+
+- Faça o clone do repositório dentro da pasta htdocs do XAMPP.
+- Abra o phpmyadmin, crie um banco chamado volta_ao_mundo_franca
+- Importe o script SQL no banco criado (que está dentro da pasta /volta-ao-mundo-franca/sql/)
+- Abra o código no seu editor de código
+- Acesse o arquivo /model/Connection.php e altere as configurações de senha e porta correspondentes ao seu banco (o padrão é sem senha e porta 3306)
+- Abra o navegador, acesse "localhost/voltaaomundofranca
